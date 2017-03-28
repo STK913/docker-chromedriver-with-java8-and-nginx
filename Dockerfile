@@ -18,7 +18,14 @@ RUN apt-get update && apt-get install --allow-unauthenticated --no-install-recom
 	nginx-module-njs \
 	gettext-base \
 	chromedriver \
-	google-chrome-stable
+	google-chrome-stable \
+	xvfb tinywm \
+	fonts-ipafont-gothic \
+	xfonts-100dpi \
+	xfonts-75dpi \
+	xfonts-scalable \
+	xfonts-cyrillic \
+	python
 
 RUN apt-get -f install -y
 RUN rm -rf /var/lib/apt/lists/*
