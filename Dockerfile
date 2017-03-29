@@ -39,6 +39,6 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/
 
 ADD ./scripts/ /home/root/scripts
 COPY nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80 443
+EXPOSE 80 443 8080 5999
 CMD ["nginx", "-g", "daemon off;"]
 ENTRYPOINT ["sh", "/home/root/scripts/start.sh"]
