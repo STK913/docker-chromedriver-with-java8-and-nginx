@@ -2,6 +2,10 @@ FROM openjdk:8-jre
 LABEL maintainer="hello@ubimap.fr"
 
 ENV NGINX_VERSION 1.10.3-1~jessie
+ENV LC_ALL C
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
 RUN apt-key update && apt-get update
 RUN apt-get install apt-transport-https libcurl3-gnutls
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
@@ -19,13 +23,15 @@ RUN apt-get update && apt-get install --allow-unauthenticated --no-install-recom
 	gettext-base \
 	chromedriver \
 	google-chrome-stable \
-	xvfb tinywm \
+	xvfb \
+	tinywm \
 	fonts-ipafont-gothic \
 	xfonts-100dpi \
 	xfonts-75dpi \
 	xfonts-scalable \
 	xfonts-cyrillic \
-	python
+	python \
+	x11vnc
 
 RUN apt-get -f install -y
 RUN rm -rf /var/lib/apt/lists/*
