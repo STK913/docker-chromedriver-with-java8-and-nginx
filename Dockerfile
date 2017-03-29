@@ -37,6 +37,8 @@ RUN apt-get -f install -y
 RUN rm -rf /var/lib/apt/lists/*
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
 
+ADD ./scripts/ /home/root/scripts
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["sh", "/home/root/scripts/start.sh"]
