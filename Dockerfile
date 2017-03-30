@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install --allow-unauthenticated --no-install-recom
 RUN apt-get -f install -y
 RUN rm -rf /var/lib/apt/lists/*
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
+RUN useradd automation --shell /bin/bash --create-home
 
 ADD ./scripts/ /home/root/scripts
 COPY nginx.conf /etc/nginx/nginx.conf
