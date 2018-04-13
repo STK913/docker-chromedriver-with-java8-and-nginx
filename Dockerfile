@@ -1,5 +1,4 @@
 FROM openjdk:8-jre
-LABEL maintainer="hello@ubimap.fr"
 
 ENV NGINX_VERSION 1.10.3-1~jessie
 ENV LC_ALL C
